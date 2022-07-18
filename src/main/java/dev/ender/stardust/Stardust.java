@@ -1,5 +1,6 @@
 package dev.ender.stardust;
 
+import dev.ender.stardust.registry.BlockRegistry;
 import net.fabricmc.api.ModInitializer;
 
 public class Stardust implements ModInitializer {
@@ -8,6 +9,6 @@ public class Stardust implements ModInitializer {
 
     @Override
     public void onInitialize() {
-
+        BlockRegistry.register();
     }
 }
