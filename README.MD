@@ -1,1 +1,1 @@
-Stardust fabric version. in development
+Stardust fabric version. It's still in development, do not use this in your server.
