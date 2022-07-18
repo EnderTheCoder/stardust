@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "stardust",
+  "version": "${version}",
+  "name": "Stardust",
+  "description": "A space weapon addon for vs2",
+  "authors": [
+    "EnderTheCoder",
+    "Null",
+    "QJL"
+  ],
+  "contact": {},
+  "license": "GPL-3.0",
+  "icon": "assets/stardust/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "dev.ender.stardust.client.StardustClient"
+    ],
+    "main": [
+      "dev.ender.stardust.Stardust"
+    ]
+  },
+  "mixins": [
+    "stardust.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.8",
+    "fabric": "*",
+    "minecraft": "1.18.2"
+  }
+}
