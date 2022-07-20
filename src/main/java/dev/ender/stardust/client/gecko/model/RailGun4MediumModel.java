@@ -10,12 +10,12 @@ import static dev.ender.stardust.Stardust.MOD_ID;
 public class RailGun4MediumModel extends AnimatedGeoModel<RailGun4MediumEntity> {
     @Override
     public Identifier getModelLocation(RailGun4MediumEntity object) {
-        return new Identifier(MOD_ID, "models/rail_gun_4_medium.geo.json");
+        return new Identifier(MOD_ID, "geo/rail_gun_4_medium.geo.json");
     }
 
     @Override
     public Identifier getTextureLocation(RailGun4MediumEntity object) {
-        return new Identifier(MOD_ID, "textures/rail_gun_4_medium.png");
+        return new Identifier(MOD_ID, "textures/block/rail_gun_4_medium.png");
     }
 
     @Override

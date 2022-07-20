@@ -1,10 +1,14 @@
 package dev.ender.stardust.block.cannon;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.util.math.BlockPos;
+import org.jetbrains.annotations.Nullable;
 
-public abstract class AbstractCannonBlock extends Block  {
+public abstract class AbstractCannonBlock extends Block implements BlockEntityProvider {
     public AbstractCannonBlock(Settings settings) {
         super(settings);
     }
