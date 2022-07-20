@@ -27,4 +27,7 @@ public class CannonBaseMediumBlock extends Block {
     public void onBroken(WorldAccess world, BlockPos pos, BlockState state) {
         super.onBroken(world, pos, state);
     }
+
+
+
 }

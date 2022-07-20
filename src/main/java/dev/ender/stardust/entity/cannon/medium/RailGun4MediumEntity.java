@@ -18,4 +18,5 @@ public class RailGun4MediumEntity extends AbstractCannonMediumEntity {
 
     }
 
+
 }

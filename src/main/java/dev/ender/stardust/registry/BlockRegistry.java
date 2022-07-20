@@ -12,7 +12,7 @@ import static dev.ender.stardust.Stardust.MOD_ID;
 
 public class BlockRegistry {
     public static final CannonBaseMediumBlock CANNON_BASE_MEDIUM = new CannonBaseMediumBlock(FabricBlockSettings.of(Material.METAL).strength(4.0f));
-    public static final RailGun4MediumBlock RAIL_GUN_4_MEDIUM_BLOCK = new RailGun4MediumBlock(FabricBlockSettings.of(Material.METAL).strength(100.0f));
+    public static final RailGun4MediumBlock RAIL_GUN_4_MEDIUM_BLOCK = new RailGun4MediumBlock(FabricBlockSettings.of(Material.METAL).strength(100.0f).luminance((state) -> 15));
 
     public static void register() {
         Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "cannon_base_medium"), CANNON_BASE_MEDIUM);

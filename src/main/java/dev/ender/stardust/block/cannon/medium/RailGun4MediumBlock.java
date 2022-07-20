@@ -19,6 +19,8 @@ public class RailGun4MediumBlock extends AbstractCannonBlockMediumBlock {
         return BlockEntityRegistry.RAIL_GUN_4_MEDIUM_ENTITY.instantiate(pos, state);
     }
 
+
+
     @Override
     public void shoot() {
 
