@@ -6,7 +6,11 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.Packet;
+import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.util.math.BlockPos;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.example.entity.RocketProjectile;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -22,6 +26,7 @@ public class ShipComputer4Entity extends BlockEntity implements IAnimatable {
     public boolean isSwitching = false;
     private final AnimationFactory factory = new AnimationFactory(this);
     public final AnimationController<ShipComputer4Entity> controller = new AnimationController<>(this, "controller", 0, this::predicate);
+
     public ShipComputer4Entity(BlockPos pos, BlockState state) {
         super(BlockEntityRegistry.SHIP_COMPUTER_4_ENTITY, pos, state);
     }
@@ -39,14 +44,20 @@ public class ShipComputer4Entity extends BlockEntity implements IAnimatable {
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        if (!isSwitching) return PlayState.CONTINUE;
-        isSwitching = false;
-        if (isOpen) {
-            Stardust.LOGGER.info("triggered close");
-            this.controller.setAnimation(new AnimationBuilder().addAnimation("close", false));
+        if (isSwitching) {
+            if (isOpen) {
+                Stardust.LOGGER.info("triggered close");
+                this.controller.setAnimation(new AnimationBuilder().addAnimation("open", false));
+            } else {
+                Stardust.LOGGER.info("triggered open");
+                this.controller.setAnimation(new AnimationBuilder().addAnimation("close", false));
+            }
+
+            this.isSwitching = false;
         } else {
-            Stardust.LOGGER.info("triggered open");
-            this.controller.setAnimation(new AnimationBuilder().addAnimation("open", false));
+            if (isOpen) {
+                this.controller.setAnimation(new AnimationBuilder().addAnimation("hold", true));
+            }
         }
         return PlayState.CONTINUE;
     }
@@ -68,5 +79,16 @@ public class ShipComputer4Entity extends BlockEntity implements IAnimatable {
         nbt.putBoolean("isOpen", this.isOpen);
         nbt.putBoolean("isSwitching", this.isSwitching);
         super.writeNbt(nbt);
+    }
+
+    @Nullable
+    @Override
+    public Packet<ClientPlayPacketListener> toUpdatePacket() {
+        return BlockEntityUpdateS2CPacket.create(this);
+    }
+
+    @Override
+    public NbtCompound toInitialChunkDataNbt() {
+        return createNbt();
     }
 }

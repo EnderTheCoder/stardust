@@ -41,7 +41,6 @@ public abstract class AbstractThrusterEntity extends BlockEntity implements IAni
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
-
         this.isOn = nbt.getBoolean("isOn");
         Stardust.LOGGER.info("triggered read " + this.isOn);
 

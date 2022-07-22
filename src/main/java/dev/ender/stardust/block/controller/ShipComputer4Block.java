@@ -40,7 +40,7 @@ public class ShipComputer4Block extends FacingBlock implements BlockEntityProvid
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
 
-        if (!world.isClient()) {
+        if (!world.isClient() && hand == Hand.MAIN_HAND) {
             this.entity.switchState();
         }
         player.sendMessage(new TranslatableText("switch"),true);
