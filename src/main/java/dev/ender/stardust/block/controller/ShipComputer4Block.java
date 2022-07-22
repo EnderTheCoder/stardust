@@ -50,7 +50,7 @@ public class ShipComputer4Block extends FacingBlock implements BlockEntityProvid
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        this.entity = BlockEntityRegistry.SHIP_COMPUTER_4_ENTITY.instantiate(pos, state);
+        this.entity = new ShipComputer4Entity(pos, state);
         return this.entity;
     }
 }

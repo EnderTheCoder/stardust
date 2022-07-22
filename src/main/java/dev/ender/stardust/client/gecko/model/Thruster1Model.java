@@ -14,7 +14,11 @@ public class Thruster1Model extends AnimatedGeoModel<Thruster1Entity> {
 
     @Override
     public Identifier getTextureLocation(Thruster1Entity object) {
-        return new Identifier(Stardust.MOD_ID, "textures/block/thruster_1.png");
+        if (object.isOn) {
+            return new Identifier(Stardust.MOD_ID, "textures/block/thruster_1_block_on.png");
+        } else {
+            return new Identifier(Stardust.MOD_ID, "textures/block/thruster_1_block_off.png");
+        }
     }
 
     @Override

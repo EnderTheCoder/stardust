@@ -3,6 +3,8 @@ package dev.ender.stardust;
 import dev.ender.stardust.registry.BlockRegistry;
 import dev.ender.stardust.registry.ItemRegistry;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.text.TranslatableText;
+import net.minecraft.util.registry.Registry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
